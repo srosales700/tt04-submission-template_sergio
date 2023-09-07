@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module tt_um_shift #(parameter bits=6)(
+module tt_um_shift #(parameter bits=5)(
 	input clk,
 	input rst,
 	input ena,
