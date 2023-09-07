@@ -50,9 +50,6 @@ set ::env(RUN_CTS) 1
 set ::env(CLOCK_PERIOD) "20"
 set ::env(CLOCK_PORT) {clk}
 
-set ::env(PL_RANDOM_INITIAL_PLACEMENT) "1"
-set ::env(DIE_AREA) "0 0 100 100"
-set ::env(PL_TARGET_DENSYTY) "0.5"
 
 # hold/slack margin
 # set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.8 
