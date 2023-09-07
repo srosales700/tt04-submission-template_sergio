@@ -1,57 +1,27 @@
-`timescale 1ns / 1ps
+module tt_um_shift ( 
 
-module tt_um_shift #(parameter bits=6)(
-	input clk,
-	input rst,
-	input ena,
-	input [bits-1:0]D,
-	output eos,
-	output Q
-    );
+    input   [7:0] ui_in,    // Dedicated inputs - connected to the input switches
 
-reg [bits-1:0] Dn, count;
-reg Qn, eosn;
-reg state;
+    output  [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
 
-assign Q=Qn;
-assign eos=eosn;
+    input   [7:0] uio_in,   // IOs: Bidirectional Input path
 
-always@(posedge clk)
-begin
-	if (rst==1) begin
-		state=0;
-		Dn=0;
-		eosn=0;
-		count=0;
-		Qn=0;
-	end
-	else begin
-		case (state)
-		 0:begin
-			Dn=D;
-			state=1;
-			Qn=Dn[count];
-			eosn=0;
-//			count=count+1;
-		 end
-		 1:begin
-			if (count==bits-1) begin
-				Qn=Dn[count];
-				count=0;
-				eosn=1;
-				state=0;
-			end
-		 else begin
-			   count=count+1;
-			   Qn=Dn[count];
-			   
-			end
-		 end
-		 	 
-		endcase		
-		
-	end
-end
-	
-    
+    output  [7:0] uio_out,  // IOs: Bidirectional Output path
+
+    output  [7:0] uio_oe,   // IOs: Bidirectional Enable path (active high: 0=input, 1=output)
+
+    input         ena,      // will go high when the design is enabled
+
+    input         clk,      // clock
+
+    input         rst_n     // reset_n - low to reset
+
+);
+
+
+
+shift#(.bits(8)) sf1 (.clk(clk),.rst(~rst_n),.D(ui_in[7:0]),.eos(uo_out[1]),.Q(uo_out[0]));
+
+  
+
 endmodule
