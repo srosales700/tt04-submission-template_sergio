@@ -36,18 +36,18 @@ documentation:
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
+    - clk
+    - rst
+    - D[0]
+    - D[1]
+    - D[2]
+    - D[3]
+    - D[4]
+    - D[5]
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - segment a
-    - segment b
+    - Q
+    - eos
     - segment c
     - segment d
     - segment e
