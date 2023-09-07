@@ -3,6 +3,7 @@
 module tt_um_shift #(parameter bits=6)(
 	input clk,
 	input rst,
+	input ena,
 	input [bits-1:0]D,
 	output eos,
 	output Q
