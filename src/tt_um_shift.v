@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module shift #(parameter bits=6)(
+module tt_um_shift #(parameter bits=6)(
 	input clk,
 	input rst,
 	input [bits-1:0]D,
