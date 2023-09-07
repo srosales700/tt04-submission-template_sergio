@@ -17,13 +17,14 @@ module tt_um_shift (
     input         rst_n     // reset_n - low to reset
 
 );
-
+    wire rst;
+    assign rst=!rst_n; 
     assign uo_out =8'b11111111;
     assign uio_oe=8'b11111111;
     assign uio_out[7:2]=6'b000000;
       
 
-    shift#(.bits(8)) sf1 (.clk(clk),.rst(~rst_n),.D(ui_in[7:0]),.eos(uio_out[1]),.Q(uio_out[0]));
+    shift#(.bits(8)) sf1 (.clk(clk),.rst(rst),.D(ui_in[7:0]),.eos(uio_out[1]),.Q(uio_out[0]));
 
   
 
