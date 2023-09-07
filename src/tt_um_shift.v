@@ -18,7 +18,8 @@ module tt_um_shift (
 
 );
 
-
+assign uio_oe =7'1111111;
+    assign uo_out[7:2]=6'b000000;    
 
 shift#(.bits(8)) sf1 (.clk(clk),.rst(~rst_n),.D(ui_in[7:0]),.eos(uo_out[1]),.Q(uo_out[0]));
 
